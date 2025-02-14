@@ -1,0 +1,110 @@
+ModelMarketplace/
+├── frontend/
+│   ├── public/
+│   │   ├── index.html
+│   │   ├── assets/
+│   │   │   ├── images/
+│   │   │   └── icons/
+│   │   └── favicon.ico
+│   ├── src/
+│   │   ├── components/
+│   │   │   ├── catalog/
+│   │   │   │   ├── ModelCard.js
+│   │   │   │   ├── ModelGrid.js
+│   │   │   │   ├── ModelDetails.js
+│   │   │   │   └── ModelComparison.js
+│   │   │   ├── user/
+│   │   │   │   ├── Authentication.js
+│   │   │   │   ├── UserSettings.js
+│   │   │   │   ├── UserDashboard.js
+│   │   │   │   └── ProfileEditor.js
+│   │   │   ├── payment/
+│   │   │   │   ├── PaymentForm.js
+│   │   │   │   ├── PurchaseHistory.js
+│   │   │   │   └── SubscriptionManager.js
+│   │   │   └── common/
+│   │   │       ├── Notification.js
+│   │   │       ├── LoadingSpinner.js
+│   │   │       └── ErrorBoundary.js
+│   │   ├── services/
+│   │   │   ├── api/
+│   │   │   │   ├── modelService.js
+│   │   │   │   ├── userService.js
+│   │   │   │   └── paymentService.js
+│   │   │   ├── auth/
+│   │   │   │   ├── authManager.js
+│   │   │   │   └── tokenManager.js
+│   │   │   └── utils/
+│   │   │       ├── cache.js
+│   │   │       ├── validation.js
+│   │   │       └── errorHandler.js
+│   │   ├── store/
+│   │   │   ├── actions/
+│   │   │   ├── reducers/
+│   │   │   └── index.js
+│   │   └── styles/
+│   │       ├── main.css
+│   │       └── components/
+├── backend/
+│   ├── api/
+│   │   ├── routes/
+│   │   │   ├── auth.py
+│   │   │   ├── models.py
+│   │   │   ├── payments.py
+│   │   │   └── downloads.py
+│   │   ├── middleware/
+│   │   │   ├── auth.py
+│   │   │   ├── rateLimiter.py
+│   │   │   └── errorHandler.py
+│   │   └── app.py
+│   ├── models/
+│   │   ├── user.py
+│   │   ├── model.py
+│   │   ├── payment.py
+│   │   └── download.py
+│   ├── services/
+│   │   ├── auth/
+│   │   │   ├── jwt_service.py
+│   │   │   └── password_service.py
+│   │   ├── storage/
+│   │   │   ├── file_service.py
+│   │   │   └── cache_service.py
+│   │   ├── payment/
+│   │   │   ├── stripe_service.py
+│   │   │   └── subscription_service.py
+│   │   └── notification/
+│   │       ├── email_service.py
+│   │       └── webhook_service.py
+│   ├── utils/
+│   │   ├── validators.py
+│   │   ├── security.py
+│   │   └── helpers.py
+│   └── tests/
+│       ├── unit/
+│       ├── integration/
+│       └── e2e/
+├── database/
+│   ├── migrations/
+│   │   └── versions/
+│   ├── seeds/
+│   │   ├── users.py
+│   │   └── models.py
+│   └── alembic.ini
+├── docker/
+│   ├── frontend/
+│   │   └── Dockerfile
+│   ├── backend/
+│   │   └── Dockerfile
+│   └── docker-compose.yml
+├── scripts/
+│   ├── setup.sh
+│   ├── deploy.sh
+│   └── backup.sh
+├── docs/
+│   ├── api/
+│   ├── deployment/
+│   └── development/
+├── .env.example
+├── .gitignore
+├── README.md
+└── requirements.txt

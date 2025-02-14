@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Model Marketplace</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+        .glass {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #1a1c2e 0%, #2c1f4a 50%, #1a1c2e 100%);
+        }
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        .card-hover:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        }
+    </style>
+</head>
+<body class="gradient-bg min-h-screen text-white">
+    <!-- Navigation -->
+    <nav class="glass sticky top-0 z-50 px-6 py-4">
+        <div class="max-w-7xl mx-auto flex justify-between items-center">
+            <a href="/" class="text-2xl font-bold">ModelMarket</a>
+            <div class="flex items-center space-x-6">
+                <a href="#models" class="hover:text-blue-400">Models</a>
+                <a href="#dashboard" class="hover:text-blue-400" id="dashboardLink">My Models</a>
+                <div id="userSection">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- User Dashboard Modal -->
+    <div id="dashboardModal" class="fixed inset-0 hidden z-50">
+        <div class="fixed inset-0 bg-black bg-opacity-50"></div>
+        <div class="fixed inset-10 glass rounded-xl p-8 overflow-y-auto">
+            <div class="flex justify-between items-center mb-6">
+                <h2 class="text-2xl font-bold">My Models</h2>
+                <button onclick="closeDashboard()" class="text-gray-400 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+            <div id="purchasedModels" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <!-- Will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <main>
+        <!-- Hero Section -->
+        <section class="py-20">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="text-center space-y-8">
+                    <h1 class="text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-blue-400 to-purple-500">
+                        Train Your Own AI Models
+                    </h1>
+                    <p class="text-xl text-gray-400 max-w-2xl mx-auto">
+                        Download, customize, and train professional-grade AI models.
+                        No API restrictions. Full source code included.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Model Search Section -->
+        <section class="py-8">
+            <div class="max-w-7xl mx-auto px-6">
+                <div class="glass rounded-lg p-6 mb-8">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                        <input 
+                            type="text" 
+                            id="searchInput" 
+                            placeholder="Search models..."
+                            class="bg-gray-800 text-white px-4 py-2 rounded-lg w-full"
+                        >
+                        <select 
+                            id="categoryFilter"
+                            class="bg-gray-800 text-white px-4 py-2 rounded-lg"
+                        >
+                            <option value="">All Categories</option>
+                            <!-- Will be populated by JavaScript -->
+                        </select>
+                        <select 
+                            id="sortOrder"
+                            class="bg-gray-800 text-white px-4 py-2 rounded-lg"
+                        >
+                            <option value="newest">Newest First</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Models Grid -->
+        <section id="models" class="py-12">
+            <div class="max-w-7xl mx-auto px-6">
+                <div id="modelsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Model Detail Modal -->
+    <div id="modelModal" class="fixed inset-0 hidden z-50">
+        <div class="fixed inset-0 bg-black bg-opacity-50"></div>
+        <div class="fixed inset-10 glass rounded-xl p-8 overflow-y-auto">
+            <div id="modelDetail">
+                <!-- Will be populated by JavaScript -->
+            </div>
+        </div>
+    </div>
+</body>
+
+<script type="module">
+    import { CatalogUI } from './js/catalog-ui.js';
+    import { UserManager } from './js/user-manager.js';
+    
+    const catalog = new CatalogUI();
+    const userManager = new UserManager();
+    
+    // Initialize the application when DOM is loaded
+    document.addEventListener('DOMContentLoaded', () => {
+        catalog.initialize();
+        userManager.checkAuthStatus();
+    });
+</script>
+</html>
